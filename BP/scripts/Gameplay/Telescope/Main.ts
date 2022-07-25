@@ -7,29 +7,27 @@ export class TelescopeHandler {
     /**
      * Whether a starfield is active in the world
      */
-    protected inStarfield = false
+    protected inStarfield: boolean = false
 
     /**
      * The instance of the player who has interacted with the telescope.
      * Will only be defined when a player is in a starfield
      */
-    protected player: Player
+    protected player: Player = undefined
 
     constructor() {
-        // Shouldn't be necessary, but do it just in case
-        this.reset()
-
         // Register interact event handler
-        world.events.dataDrivenEntityTriggerEvent.subscribe(this.onInteract)
+        world.events.dataDrivenEntityTriggerEvent.subscribe((event) => this.onInteract(event))
     }
 
     /**
      * Method called when a telescope is interacted with
      */
     onInteract(event: DataDrivenEntityTriggerEvent) {
+        if (event.id !== 'star:begin_starfield') return
         this.player = event.entity as Player
 
-        if (!this.isAvailable(event.id)) return
+        if (!this.isAvailable()) return
 
         const starfield = new Starfield(this.player)
         starfield.events.onStart = () => this.inStarfield = true
@@ -40,24 +38,24 @@ export class TelescopeHandler {
      * Whether the starfield is available to be used by the player
      * @returns A boolean representing whether the starfield is available
      */
-    isAvailable(eventId: string) {
+    isAvailable() {
         const ow = world.getDimension('overworld')
         const time = getTime()
         const isMidnight = time >= 17000 && time <= 22000
 
-        if (eventId === 'star:begin_starfield' && !this.inStarfield && this.player.dimension === ow && isMidnight) {
+        if (!this.inStarfield && this.player.dimension === ow && isMidnight) {
             return true
-        } else if (eventId === 'star:begin_starfield' && this.inStarfield && this.player.dimension === ow && isMidnight) {
+        } else if (this.inStarfield && this.player.dimension === ow && isMidnight) {
             alert([
                 { text: 'Another player is amongst the stars... Please wait for them to be finished.' }
             ], this.player)
             return false
-        } else if (eventId === 'star:begin_starfield' && !this.inStarfield && this.player.dimension !== ow && isMidnight) {
+        } else if (!this.inStarfield && this.player.dimension !== ow && isMidnight) {
             alert([
                 { text: 'You must be in the overworld to use the Telescope!' }
             ], this.player)
             return false
-        } else if (eventId === 'star:begin_starfield' && !this.inStarfield && this.player.dimension === ow && !isMidnight) {
+        } else if (!this.inStarfield && this.player.dimension === ow && !isMidnight) {
             alert([
                 { text: 'The telescope can only be used during midnight.' }
             ], this.player)

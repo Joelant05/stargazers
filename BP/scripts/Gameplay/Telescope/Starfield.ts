@@ -4,9 +4,9 @@ import { giveMainhand } from "scripts/Utils/giveMainhand.js"
 import { spawnInRange } from "scripts/Utils/spawnInRange.js"
 
 export class Starfield {
-    public events: {
-        onStart: () => void
-        onComplete: () => void
+    public events = {
+        onStart: () => { },
+        onComplete: () => { }
     }
 
     protected position: Location

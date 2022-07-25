@@ -21,6 +21,10 @@
 					}
 				]
 			},
+			"minecraft:collision_box": {
+				"height": 1.3,
+				"width": 0.9
+			},
 			"minecraft:interact": {
 				"interactions": [
 					{

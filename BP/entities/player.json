@@ -190,6 +190,8 @@
 			}
 		},
 		"events": {
+			// KEEP - used in script
+			"star:begin_starfield": {},
 			"star:play_starfall": {
 				"run_command": {
 					"target": "self",
