@@ -1,1 +1,3 @@
-import 'scripts/Gameplay/Telescope/Main.js'
+import { TelescopeHandler } from 'scripts/Gameplay/Telescope/Main.js'
+
+new TelescopeHandler()

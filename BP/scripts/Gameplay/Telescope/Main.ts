@@ -1,20 +1,42 @@
-import { world, Location, Player, MinecraftItemTypes, EntityRaycastOptions, MinecraftEffectTypes } from "mojang-minecraft"
+import { world, Location, Player, MinecraftItemTypes, EntityRaycastOptions, MinecraftEffectTypes, DataDrivenEntityTriggerEvent } from "mojang-minecraft"
 import { getTime } from "scripts/Utils/time.js"
 import { alert } from "scripts/Utils/alert.js"
 import { giveMainhand } from "scripts/Utils/giveMainhand.js"
 import { spawnInRange } from "scripts/Utils/spawnInRange.js"
 
-let inStarfield = false
-world.events.dataDrivenEntityTriggerEvent.subscribe((event) => {
-    const player = event.entity as Player
-    const ow = world.getDimension('overworld')
-    const time = getTime()
-    const isMidnight = time >= 17000 && time <= 22000
-    if (event.id === 'star:begin_starfield' && !inStarfield && player.dimension === ow && isMidnight) {
-        if (!giveMainhand(MinecraftItemTypes.spyglass, player)) return
-        inStarfield = true
-        const center = new Location(player.location.x, 500, player.location.z)
-        player.teleport(center, ow, 0, 0)
+export class TelescopeHandler {
+    /**
+     * Whether a starfield is active in the world
+     */
+    protected inStarfield = false
+
+    /**
+     * The instance of the player who has interacted with the telescope.
+     * Will only be defined when a player is in a starfield
+     */
+    protected player: Player
+
+    constructor() {
+        // Shouldn't be necessary, but do it just in case
+        this.reset()
+
+        // Register interact event handler
+        world.events.dataDrivenEntityTriggerEvent.subscribe(this.onInteract)
+    }
+
+    /**
+     * Method called when a telescope is interacted with
+     */
+    onInteract(event: DataDrivenEntityTriggerEvent) {
+        const ow = world.getDimension('overworld')
+        this.player = event.entity as Player
+
+        if (!this.isAvailable(event.id)) return
+
+        if (!giveMainhand(MinecraftItemTypes.spyglass, this.player)) return
+        this.inStarfield = true
+        const center = new Location(this.player.location.x, 500, this.player.location.z)
+        this.player.teleport(center, ow, 0, 0)
         const controller = ow.spawnEntity('star:starfield_controller', center)
         controller.runCommandAsync('ride @p start_riding @s teleport_rider').then((res) => {
             if (res.successCount > 0) {
@@ -23,10 +45,10 @@ world.events.dataDrivenEntityTriggerEvent.subscribe((event) => {
                     { text: "You are now §dStargazing§r " },
                     { selector: '@s' },
                     { text: "! Using the §aSpyglass§r, find the §6Magical Star§r and zoom in on it..." }
-                ], player)
+                ], this.player)
                 let progress = 0
                 spawnInRange('star:star', center, 14, 14, 8)
-                player.addEffect(
+                this.player.addEffect(
                     MinecraftEffectTypes.resistance,
                     4000,
                     25,
@@ -38,19 +60,20 @@ world.events.dataDrivenEntityTriggerEvent.subscribe((event) => {
                         if (progress < 12) {
                             const opts = new EntityRaycastOptions()
                             opts.maxDistance = 50
-                            const entities = player.getEntitiesFromViewVector(opts)
+                            const entities = this.player.getEntitiesFromViewVector(opts)
                             if (entities.length > 0 && entities[0].id === 'star:star' && player.hasComponent('is_baby')) {
-                                if (progress === 0) player.onScreenDisplay.setTitle('showstardisplay')
+                                if (progress === 0) this.player.onScreenDisplay.setTitle('showstardisplay')
                                 progress++
                             } else {
-                                player.onScreenDisplay.setTitle('hidestardisplay')
+                                this.player.onScreenDisplay.setTitle('hidestardisplay')
                                 progress = 0
                             }
                         } else {
-                            player.onScreenDisplay.setTitle('hidestardisplay')
-                            player.runCommand('clear @s spyglass 0 1')
-                            player.runCommand('event entity @e[r=5,type=star:starfield_controller] star:on_complete')
-                            player.triggerEvent('star:queue_starfall')
+                            this.player.onScreenDisplay.setTitle('hidestardisplay')
+                            this.player.runCommand('clear @s spyglass 0 1')
+                            this.player.runCommand('event entity @e[r=5,type=star:starfield_controller] star:on_complete')
+                            this.player.triggerEvent('star:queue_starfall')
+                            this.inStarfield = false
 
                             world.events.tick.unsubscribe(tick)
                         }
@@ -65,17 +88,39 @@ world.events.dataDrivenEntityTriggerEvent.subscribe((event) => {
                 console.warn('Error running /ride command!')
             }
         })
-    } else if (event.id === 'star:begin_starfield' && inStarfield && player.dimension === ow && isMidnight) {
-        alert([
-            { text: 'Another player is amongst the stars... Please wait for them to be finished.' }
-        ], player)
-    } else if (event.id === 'star:begin_starfield' && !inStarfield && player.dimension !== ow && isMidnight) {
-        alert([
-            { text: 'You must be in the overworld to use the Telescope!' }
-        ], player)
-    } else if (event.id === 'star:begin_starfield' && !inStarfield && player.dimension === ow && !isMidnight) {
-        alert([
-            { text: 'The telescope can only be used during midnight.' }
-        ], player)
     }
-})
+
+    /**
+     * Whether the starfield is available to be used by the player
+     * @returns A boolean representing whether the starfield is available
+     */
+    isAvailable(eventId: string) {
+        const ow = world.getDimension('overworld')
+        const time = getTime()
+        const isMidnight = time >= 17000 && time <= 22000
+
+        if (eventId === 'star:begin_starfield' && !this.inStarfield && this.player.dimension === ow && isMidnight) {
+            return true
+        } else if (eventId === 'star:begin_starfield' && this.inStarfield && this.player.dimension === ow && isMidnight) {
+            alert([
+                { text: 'Another player is amongst the stars... Please wait for them to be finished.' }
+            ], this.player)
+            return false
+        } else if (eventId === 'star:begin_starfield' && !this.inStarfield && this.player.dimension !== ow && isMidnight) {
+            alert([
+                { text: 'You must be in the overworld to use the Telescope!' }
+            ], this.player)
+            return false
+        } else if (eventId === 'star:begin_starfield' && !this.inStarfield && this.player.dimension === ow && !isMidnight) {
+            alert([
+                { text: 'The telescope can only be used during midnight.' }
+            ], this.player)
+            return false
+        }
+    }
+
+    reset() {
+        this.player = undefined
+        this.inStarfield = false
+    }
+}
