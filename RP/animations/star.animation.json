@@ -1,0 +1,77 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.star.spin": {
+			"animation_length": 13,
+			"bones": {
+				"main": {
+					"rotation": {
+						"1.0833": [
+							0,
+							0,
+							0
+						],
+						"1.2917": {
+							"pre": [
+								0,
+								304.31,
+								0
+							],
+							"post": [
+								0,
+								304.31,
+								0
+							],
+							"lerp_mode": "catmullrom"
+						},
+						"1.75": {
+							"post": [
+								0,
+								360,
+								0
+							],
+							"lerp_mode": "catmullrom"
+						},
+						"12.2083": [
+							0,
+							0,
+							0
+						],
+						"12.4167": {
+							"pre": [
+								0,
+								304.31,
+								0
+							],
+							"post": [
+								0,
+								304.31,
+								0
+							],
+							"lerp_mode": "catmullrom"
+						},
+						"12.875": {
+							"post": [
+								0,
+								360,
+								0
+							],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				}
+			},
+			"sound_effects": {
+				"0.375": {
+					"effect": "star_poof"
+				}
+			},
+			"particle_effects": {
+				"1.75": {
+					"effect": "starfield_complete",
+					"locator": "center"
+				}
+			}
+		}
+	}
+}

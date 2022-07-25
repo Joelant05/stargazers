@@ -1,0 +1,39 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "star:star",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/star"
+			},
+			"geometry": {
+				"default": "geometry.star"
+			},
+			"render_controllers": [
+				"controller.render.star"
+			],
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			},
+			"particle_effects": {
+				"starfield_complete": "star:starfield_complete"
+			},
+			"sound_effects": {
+				"star_poof": "sfx.star_poof"
+			},
+			"animations": {
+				"spin": "animation.star.spin",
+				"star_controller": "controller.animation.star"
+			},
+			"scripts": {
+				"animate": [
+					"star_controller"
+				]
+			}
+		}
+	}
+}

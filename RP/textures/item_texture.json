@@ -1,0 +1,9 @@
+{
+	"resource_pack_name": "Stargazers",
+	"texture_name": "atlas.items",
+	"texture_data": {
+		"star_telescope_place": {
+			"textures": "textures/items/telescope_place"
+		}
+	}
+}

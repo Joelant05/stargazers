@@ -1,0 +1,36 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "star:starfield_controller",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/starfield_controller"
+			},
+			"geometry": {
+				"default": "geometry.starfield_controller"
+			},
+			"render_controllers": [
+				"controller.render.starfield_controller"
+			],
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			},
+			"particle_effects": {
+				"static_starfield": "star:static_starfield",
+				"starfield_comet": "star:starfield_comet"
+			},
+			"animations": {
+				"starfield": "controller.animation.starfield"
+			},
+			"scripts": {
+				"animate": [
+					"starfield"
+				]
+			}
+		}
+	}
+}

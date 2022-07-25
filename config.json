@@ -1,0 +1,44 @@
+{
+	"type": "minecraftBedrock",
+	"name": "Stargazers",
+	"namespace": "star",
+	"authors": [
+		"Joel"
+	],
+	"targetVersion": "1.19.10",
+	"description": "Look to the stars and find your way... Entry for Bedrock Add-Ons jam, enjoy :D",
+	"experimentalGameplay": {
+		"holidayCreatorFeatures": true,
+		"creationOfCustomBiomes": false,
+		"upcomingCreatorFeatures": true,
+		"enableGameTestFramework": true,
+		"experimentalMolangFeatures": true,
+		"educationEdition": false
+	},
+	"bdsProject": false,
+	"packs": {
+		"behaviorPack": "./BP",
+		"resourcePack": "./RP"
+	},
+	"worlds": [
+		"./worlds/*"
+	],
+	"compiler": {
+		"plugins": [
+			"typeScript",
+			"entityIdentifierAlias",
+			"customEntityComponents",
+			"customItemComponents",
+			"customBlockComponents",
+			"customCommands",
+			"moLang",
+			"formatVersionCorrection",
+			[
+				"simpleRewrite",
+				{
+					"packName": "Stargazers"
+				}
+			]
+		]
+	}
+}

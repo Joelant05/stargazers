@@ -1,0 +1,30 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.detect_spyglass": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "is_using": "query.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:spyglass') && query.is_using_item"
+                        }
+                    ]
+                },
+                "is_using": {
+                    "transitions": [
+                        {
+                            "default": "!query.is_item_name_any('slot.weapon.mainhand', 'minecraft:spyglass') || !query.is_using_item"
+                        }
+                    ],
+                    "on_entry": [
+                        "@s star:start_using_spyglass"
+                    ],
+                    "on_exit": [
+                        "@s star:stop_using_spyglass"
+                    ]
+                }
+            }
+        }
+    }
+}

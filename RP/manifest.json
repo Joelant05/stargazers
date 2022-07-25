@@ -1,0 +1,52 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"Joel"
+		],
+		"generated_with": {
+			"bridge": [
+				"2.3.0"
+			],
+			"dash": [
+				"0.9.17"
+			]
+		}
+	},
+	"header": {
+		"name": "pack.name",
+		"description": "pack.description",
+		"min_engine_version": [
+			1,
+			19,
+			0
+		],
+		"uuid": "e7dcd377-cbb5-49ef-9213-c1460b55a9e4",
+		"version": [
+			1,
+			0,
+			0
+		]
+	},
+	"modules": [
+		{
+			"type": "resources",
+			"uuid": "8f8b15f1-2128-41f5-98de-e18445c8df7b",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "38e976e6-1432-411e-af1f-7796a491a252",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	]
+}

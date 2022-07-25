@@ -1,0 +1,13 @@
+pack.name=Stargazers RP
+pack.description=Look to the stars and find your way... Entry for Bedrock Add-Ons jam, enjoy :D
+
+tile.star:star_core.name=Star Core
+item.spawn_egg.entity.star:falling_star.name=Spawn Falling Star
+entity.star:falling_star.name=Falling Star
+item.spawn_egg.entity.star:telescope.name=Spawn Telescope
+entity.star:telescope.name=Telescope
+item.spawn_egg.entity.star:starfield_controller.name=Spawn Starfield
+entity.star:starfield_controller.name=Starfield
+item.spawn_egg.entity.star:star.name=Spawn Star
+entity.star:star.name=Star
+item.star:telescope_place=Telescope

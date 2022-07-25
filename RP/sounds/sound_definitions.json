@@ -1,0 +1,17 @@
+{
+	"format_version": "1.14.0",
+	"sound_definitions": {
+		"sfx.star_fall": {
+			"category": "ambient",
+			"sounds": [
+				"sounds/effects/star_fall"
+			]
+		},
+		"sfx.star_poof": {
+			"category": "ambient",
+			"sounds": [
+				"sounds/effects/star_poof"
+			]
+		}
+	}
+}

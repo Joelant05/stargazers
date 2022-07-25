@@ -1,0 +1,17 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.starfield": {
+			"initial_state": "active",
+			"states": {
+				"active": {
+					"particle_effects": [
+						{
+							"effect": "static_starfield"
+						}
+					]
+				}
+			}
+		}
+	}
+}

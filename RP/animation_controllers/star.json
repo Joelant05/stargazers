@@ -1,0 +1,22 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.star": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "complete": "f.starfield_complete()"
+                        }
+                    ]
+                },
+                "complete": {
+                    "animations": [
+                        "spin"
+                    ]
+                }
+            }
+        }
+    }
+}

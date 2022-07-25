@@ -1,0 +1,110 @@
+{
+  "namespace": "hud",
+  "star_progress_cover": {
+    "type": "image",
+    "texture": "textures/ui/spyglass_star_display_off",
+    "size": [
+      288,
+      256
+    ],
+    "offset": [
+      0,
+      -4
+    ],
+    "layer": 10,
+    "anims": [
+      "@hud.star_progress_anim"
+    ],
+    "anchor_to": "center",
+    "anchor_from": "center",
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_title_text_string = 'showstardisplay')",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "star_progress_base": {
+    "type": "image",
+    "texture": "textures/ui/spyglass_star_display_on",
+    "size": [
+      288,
+      256
+    ],
+    "anchor_to": "center",
+    "anchor_from": "center",
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_title_text_string = 'showstardisplay')",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "star_progress_anim": {
+    "anim_type": "offset",
+    "from": [
+      0,
+      0
+    ],
+    "to": [
+      0,
+      "-100%y"
+    ],
+    "duration": 6
+  },
+  "star_progress_base_display_factory": {
+    "type": "panel",
+    "factory": {
+      "name": "hud_title_text_factory",
+      "control_ids": {
+        "hud_title_text": "star_progress_base@hud.star_progress_base"
+      }
+    }
+  },
+  "star_progress_cover_display_factory": {
+    "type": "panel",
+    "factory": {
+      "name": "hud_title_text_factory",
+      "control_ids": {
+        "hud_title_text": "star_progress_cover@hud.star_progress_cover"
+      }
+    }
+  },
+  "root_panel": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "star_progress_cover_display_factory@hud.star_progress_cover_display_factory": {}
+          },
+          {
+            "star_progress_base_display_factory@hud.star_progress_base_display_factory": {}
+          }
+        ]
+      }
+    ]
+  },
+  "hud_title_text/title_frame/title": {
+    "modifications": [
+      {
+        "array_name": "bindings",
+        "operation": "insert_back",
+        "value": {
+          "binding_type": "view",
+          "source_property_name": "(not ((#text = 'showstardisplay') or (#text = 'hidestardisplay')))",
+          "target_property_name": "#visible"
+        }
+      }
+    ]
+  }
+}

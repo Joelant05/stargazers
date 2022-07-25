@@ -1,0 +1,74 @@
+{
+	"format_version": "1.19.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "star:starfield_controller",
+			"is_spawnable": true,
+			"is_summonable": true,
+			"is_experimental": false
+		},
+		"component_groups": {
+			"star:complete": {
+				"minecraft:is_tamed": {},
+				"minecraft:timer": {
+					"looping": false,
+					"time": 14,
+					"time_down_event": {
+						"target": "self",
+						"event": "star:on_destroy"
+					}
+				}
+			}
+		},
+		"components": {
+			"minecraft:rideable": {
+				"rider_can_interact": true,
+				"seat_count": 1,
+				"seats": [
+					{
+						"position": [
+							0,
+							1,
+							0
+						]
+					}
+				]
+			},
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"deals_damage": false
+					}
+				]
+			},
+			"utils:despawnable": {}
+		},
+		"events": {
+			"star:on_destroy": {
+				"sequence": [
+					{
+						"run_command": {
+							"target": "self",
+							"command": [
+								"/event entity @e[type=star:star,r=20] utils:despawn"
+							]
+						}
+					},
+					{
+						"trigger": {
+							"target": "self",
+							"event": "utils:despawn"
+						}
+					}
+				]
+			},
+			"star:on_complete": {
+				"add": {
+					"component_groups": [
+						"star:complete"
+					]
+				}
+			}
+		}
+	}
+}
