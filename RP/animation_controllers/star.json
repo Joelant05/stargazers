@@ -7,16 +7,6 @@
                 "default": {
                     "transitions": [
                         {
-                            "complete": "f.starfield_complete()"
-                        }
-                    ]
-                },
-                "complete": {
-                    "animations": [
-                        "spin"
-                    ],
-                    "transitions": [
-                        {
                             "falling": "query.is_baby && !query.is_on_ground"
                         }
                     ]

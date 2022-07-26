@@ -41,8 +41,23 @@
 					]
 				}
 			},
-			// KEEP - used in script
-			"star:on_star_interact": {}
+			"star:on_star_interact": {
+				"sequence": [
+					{
+						"trigger": {
+							"target": "other",
+							"event": "star:on_star_interact_player"
+						}
+					},
+					{
+						// TODO - particle effect on destroy
+						"trigger": {
+							"target": "self",
+							"event": "utils:despawn"
+						}
+					}
+				]
+			}
 		}
 	}
 }

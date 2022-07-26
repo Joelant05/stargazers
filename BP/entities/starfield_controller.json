@@ -9,7 +9,6 @@
 		},
 		"component_groups": {
 			"star:complete": {
-				"minecraft:is_tamed": {},
 				"minecraft:timer": {
 					"looping": false,
 					"time": 14,
@@ -66,6 +65,12 @@
 				"add": {
 					"component_groups": [
 						"star:complete"
+					]
+				},
+				"run_command": {
+					"target": "self",
+					"command": [
+						"/playanimation @e[type=star:star,c=1,r=32] animation.star.spin"
 					]
 				}
 			}

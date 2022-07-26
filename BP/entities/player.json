@@ -190,6 +190,7 @@
 			}
 		},
 		"events": {
+			"star:on_star_interact_player": {},
 			// KEEP - used in script
 			"star:begin_starfield": {},
 			"star:play_starfall": {

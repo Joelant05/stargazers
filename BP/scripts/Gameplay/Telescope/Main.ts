@@ -14,6 +14,7 @@ export class TelescopeHandler {
      * Will only be defined when a player is in a starfield
      */
     protected player: Player = undefined
+    protected lastDay: number
 
     constructor() {
         // Register interact event handler
@@ -29,6 +30,8 @@ export class TelescopeHandler {
 
         if (!this.isAvailable()) return
 
+        const ow = world.getDimension('overworld')
+        this.lastDay = ow.runCommand('time query day').data
         const starfield = new Starfield(this.player)
         starfield.events.onStart = () => this.inStarfield = true
         starfield.events.onComplete = () => this.inStarfield = false
@@ -42,22 +45,31 @@ export class TelescopeHandler {
         const ow = world.getDimension('overworld')
         const time = getTime()
         const isMidnight = time >= 17000 && time <= 22000
+        const today = ow.runCommand('time query day').data
+        console.warn(today, this.lastDay, this.lastDay != today)
+        console.warn(!this.inStarfield, this.player.dimension === ow, isMidnight, this.lastDay != today)
 
-        if (!this.inStarfield && this.player.dimension === ow && isMidnight) {
+        if (!this.inStarfield && this.player.dimension === ow && isMidnight && this.lastDay != today) {
             return true
-        } else if (this.inStarfield && this.player.dimension === ow && isMidnight) {
+        } else if (this.inStarfield && this.player.dimension === ow && isMidnight && this.lastDay != today) {
             alert([
                 { text: 'Another player is amongst the stars... Please wait for them to be finished.' }
             ], this.player)
             return false
-        } else if (!this.inStarfield && this.player.dimension !== ow && isMidnight) {
+        } else if (!this.inStarfield && this.player.dimension !== ow && isMidnight && this.lastDay != today) {
             alert([
                 { text: 'You must be in the overworld to use the Telescope!' }
             ], this.player)
             return false
-        } else if (!this.inStarfield && this.player.dimension === ow && !isMidnight) {
+        } else if (!this.inStarfield && this.player.dimension === ow && !isMidnight && this.lastDay != today) {
             alert([
                 { text: 'The telescope can only be used during midnight.' }
+            ], this.player)
+            return false
+        } else if (!this.inStarfield && this.player.dimension === ow && isMidnight && this.lastDay == today) {
+            // TODO - fix this condition, need to check for day to reset, rather than check day count because it changes in middle of night
+            alert([
+                { text: 'The telescope can only be used once per night.' }
             ], this.player)
             return false
         }
