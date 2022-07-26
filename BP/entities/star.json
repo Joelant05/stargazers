@@ -50,7 +50,12 @@
 						}
 					},
 					{
-						// TODO - particle effect on destroy
+						"run_command": {
+							"target": "self",
+							"command": "/particle star:star_explode ~ ~ ~"
+						}
+					},
+					{
 						"trigger": {
 							"target": "self",
 							"event": "utils:despawn"
