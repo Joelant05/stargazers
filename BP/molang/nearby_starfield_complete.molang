@@ -1,6 +1,6 @@
 function('starfield_complete', {
     v.complete = 0;
-    for_each(v.sf, q.get_nearby_entities(16, 'star:starfield_controller'), {
+    for_each(v.sf, q.get_nearby_entities(24, 'star:starfield_controller'), {
         v.complete = v.sf -> q.is_tamed;
     });
     return v.complete;

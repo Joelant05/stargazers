@@ -1,5 +1,5 @@
 {
-	"format_version": "1.16.0",
+	"format_version": "1.19.0",
 	"minecraft:entity": {
 		"description": {
 			"identifier": "star:star",
@@ -7,10 +7,42 @@
 			"is_summonable": true,
 			"is_experimental": false
 		},
-		"component_groups": {},
-		"components": {
-			"utils:despawnable": {}
+		"component_groups": {
+			"star:fall": {
+				"minecraft:physics": {},
+				"minecraft:is_baby": {},
+				"minecraft:interact": {
+					"interactions": [
+						{
+							"on_interact": {
+								"target": "self",
+								"event": "star:on_star_interact"
+							}
+						}
+					]
+				}
+			}
 		},
-		"events": {}
+		"components": {
+			"utils:despawnable": {},
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"deals_damage": false
+					}
+				]
+			}
+		},
+		"events": {
+			"star:start_fall": {
+				"add": {
+					"component_groups": [
+						"star:fall"
+					]
+				}
+			},
+			// KEEP - used in script
+			"star:on_star_interact": {}
+		}
 	}
 }

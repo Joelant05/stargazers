@@ -20,7 +20,9 @@
 				"overlay_color": "#FFFFFF"
 			},
 			"particle_effects": {
-				"starfield_complete": "star:starfield_complete"
+				"starfield_complete": "star:starfield_complete",
+				"falling_star": "star:falling_star",
+				"fallen_star_spiral": "star:fallen_star_spiral"
 			},
 			"sound_effects": {
 				"star_poof": "sfx.star_poof"

@@ -2,6 +2,7 @@ import { world, Location, Player, MinecraftItemTypes, EntityRaycastOptions, Mine
 import { alert } from "scripts/Utils/alert.js"
 import { giveMainhand } from "scripts/Utils/giveMainhand.js"
 import { spawnInRange } from "scripts/Utils/spawnInRange.js"
+import { wait } from "scripts/Utils/wait.js"
 
 export class Starfield {
     public events = {
@@ -38,7 +39,7 @@ export class Starfield {
                     { text: "! Using the §aSpyglass§r, find the §6Magical Star§r and zoom in on it..." }
                 ], this.player)
                 let progress = 0
-                spawnInRange('star:star', this.position, 14, 14, 8)
+                const star = spawnInRange('star:star', this.position, 14, 14, 8)
                 this.player.addEffect(
                     MinecraftEffectTypes.resistance,
                     4000,
@@ -66,12 +67,16 @@ export class Starfield {
                             this.player.runCommand('clear @s spyglass 0 1')
                             this.player.runCommand('event entity @e[r=5,type=star:starfield_controller] star:on_complete')
                             this.player.triggerEvent('star:queue_starfall')
+                            wait(11).then(() => {
+                                star.triggerEvent('star:start_fall')
+                            })
 
                             world.events.tick.unsubscribe(tick)
                         }
 
                     } else if (eventData.currentTick % 200 === 0) {
                         // Every 10 seconds
+                        // Keep it night during starfield
                         ow.runCommand('time set midnight')
                     }
 

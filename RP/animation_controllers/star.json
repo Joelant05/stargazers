@@ -14,6 +14,30 @@
                 "complete": {
                     "animations": [
                         "spin"
+                    ],
+                    "transitions": [
+                        {
+                            "falling": "query.is_baby && !query.is_on_ground"
+                        }
+                    ]
+                },
+                "falling": {
+                    "particle_effects": [
+                        {
+                            "effect": "falling_star"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "fallen": "query.is_on_ground"
+                        }
+                    ]
+                },
+                "fallen": {
+                    "particle_effects": [
+                        {
+                            "effect": "fallen_star_spiral"
+                        }
                     ]
                 }
             }

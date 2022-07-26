@@ -74,7 +74,7 @@
 				"sequence": [
 					{
 						"run_command": {
-							"command": "/loot spawn ~ ~ ~ loot test"
+							"command": "/loot spawn ~ ~ ~ loot \"entities/telescope\""
 						}
 					},
 					{

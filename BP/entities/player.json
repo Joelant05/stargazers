@@ -196,8 +196,7 @@
 				"run_command": {
 					"target": "self",
 					"command": [
-						"/playsound sfx.star_fall @s ~ ~ ~",
-						"/say play"
+						"/playsound sfx.star_fall @s ~ ~ ~"
 					]
 				}
 			},
@@ -205,11 +204,6 @@
 				"add": {
 					"component_groups": [
 						"star:queueing_sound"
-					]
-				},
-				"run_command": {
-					"command": [
-						"/say queue"
 					]
 				}
 			},

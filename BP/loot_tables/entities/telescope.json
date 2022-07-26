@@ -5,7 +5,8 @@
             "entries": [
                 {
                     "type": "item",
-                    "name": "dirt"
+                    "name": "star:telescope_place",
+                    "weight": 1
                 }
             ]
         }
