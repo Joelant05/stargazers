@@ -25,6 +25,7 @@
 		},
 		"components": {
 			"utils:despawnable": {},
+			"minecraft:fire_immune": true,
 			"minecraft:damage_sensor": {
 				"triggers": [
 					{

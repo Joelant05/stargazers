@@ -4,7 +4,7 @@
 		"description": {
 			"identifier": "star:star",
 			"materials": {
-				"default": "entity_alphatest"
+				"default": "entity_emissive_alpha"
 			},
 			"textures": {
 				"default": "textures/entity/star"

@@ -1,0 +1,31 @@
+{
+	"format_version": "1.19.0",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "star:telescope"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"s": {
+				"item": "minecraft:spyglass"
+			},
+			"a": {
+				"item": "minecraft:amethyst_block"
+			},
+			"r": {
+				"item": "minecraft:blaze_rod"
+			}
+		},
+		"pattern": [
+			" as",
+			" aa",
+			"r  "
+		],
+		"result": {
+			"count": 1,
+			"item": "star:telescope_place"
+		}
+	}
+}

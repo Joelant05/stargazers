@@ -14,6 +14,7 @@
 		},
 		"components": {
 			"minecraft:physics": {},
+			"minecraft:fire_immune": true,
 			"minecraft:damage_sensor": {
 				"triggers": [
 					{

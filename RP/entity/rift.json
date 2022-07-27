@@ -4,7 +4,7 @@
 		"description": {
 			"identifier": "star:rift",
 			"materials": {
-				"default": "entity_alphatest"
+				"default": "entity_emissive"
 			},
 			"textures": {
 				"default": "textures/entity/rift"
@@ -18,6 +18,17 @@
 			"spawn_egg": {
 				"base_color": "#000000",
 				"overlay_color": "#FFFFFF"
+			},
+			"particle_effects": {
+				"rift_circle": "star:rift_circle"
+			},
+			"animations": {
+				"rift": "controller.animation.rift"
+			},
+			"scripts": {
+				"animate": [
+					"rift"
+				]
 			}
 		}
 	}

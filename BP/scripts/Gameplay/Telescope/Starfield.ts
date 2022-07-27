@@ -41,7 +41,7 @@ export class Starfield {
         const star = spawnInRange('star:star', this.position, 15, 15, 6)
         this.player.addEffect(
             MinecraftEffectTypes.resistance,
-            3500,
+            2000,
             25,
             false
         )

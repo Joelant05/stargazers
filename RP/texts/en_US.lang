@@ -9,6 +9,7 @@ entity.star:telescope.name=Telescope
 item.star:telescope_place=Telescope
 
 entity.star:starfield_controller.name=Starfield
+action.hint.exit.star:starfield_controller=Find the Star
 
 item.spawn_egg.entity.star:star.name=Spawn Star
 entity.star:star.name=Star
