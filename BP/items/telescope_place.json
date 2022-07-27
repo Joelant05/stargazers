@@ -13,7 +13,8 @@
 			},
 			"minecraft:entity_placer": {
 				"entity": "star:telescope"
-			}
+			},
+			"minecraft:max_stack_size": 1
 		}
 	}
 }
