@@ -38,7 +38,7 @@ export class Starfield {
             { text: "! Using the §aSpyglass§r, find the §6Magical Star§r and zoom in on it..." }
         ], this.player)
         let progress = 0
-        const star = spawnInRange('star:star', this.position, 14, 14, 8)
+        const star = spawnInRange('star:star', this.position, 15, 15, 6)
         this.player.addEffect(
             MinecraftEffectTypes.resistance,
             3500,

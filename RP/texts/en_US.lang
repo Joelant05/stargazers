@@ -12,3 +12,6 @@ entity.star:starfield_controller.name=Starfield
 
 item.spawn_egg.entity.star:star.name=Spawn Star
 entity.star:star.name=Star
+
+item.spawn_egg.entity.star:rift.name=Spawn Rift
+entity.star:rift.name=Rift
