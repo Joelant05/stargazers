@@ -20,7 +20,8 @@
 				"overlay_color": "#FFFFFF"
 			},
 			"particle_effects": {
-				"rift_circle": "star:rift_circle"
+				"rift_circle": "star:rift_circle",
+				"rift_leak": "star:rift_leak"
 			},
 			"animations": {
 				"rift": "controller.animation.rift"
