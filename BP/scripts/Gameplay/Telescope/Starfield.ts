@@ -1,4 +1,4 @@
-import { world, Location, Player, MinecraftItemTypes, EntityRaycastOptions, MinecraftEffectTypes, Entity } from "mojang-minecraft"
+import { world, Location, Player, MinecraftItemTypes, EntityRaycastOptions, MinecraftEffectTypes, Entity, TickEvent } from "mojang-minecraft"
 import { alert } from "scripts/Utils/alert.js"
 import { giveMainhand } from "scripts/Utils/giveMainhand.js"
 import { spawnInRange } from "scripts/Utils/spawnInRange.js"
@@ -9,6 +9,8 @@ export class Starfield {
         onStart: () => { },
         onComplete: () => { }
     }
+
+    protected forceRide: (arg: TickEvent) => void
 
     protected position: Location
 
@@ -45,12 +47,14 @@ export class Starfield {
             25,
             false
         )
+        this.forceRide = world.events.tick.subscribe(() => {
+            try {
+                controller.runCommand('ride @p start_riding @s teleport_rider')
+            } catch { }
+        })
         const tick = world.events.tick.subscribe((eventData) => {
             if (eventData.currentTick % 10 === 0) {
                 // Every 0.5 seconds
-                try {
-                    controller.runCommand('ride @p start_riding @s teleport_rider')
-                } catch { }
                 if (progress < 12) {
                     const opts = new EntityRaycastOptions()
                     opts.maxDistance = 50
@@ -70,6 +74,7 @@ export class Starfield {
                     this.player.runCommand('event entity @e[r=5,type=star:starfield_controller] star:on_complete')
                     this.player.triggerEvent('star:queue_starfall')
                     wait(11).then(() => {
+                        world.events.tick.unsubscribe(this.forceRide)
                         star.triggerEvent('star:start_fall')
                     })
 
