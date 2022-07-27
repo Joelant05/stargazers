@@ -8,6 +8,9 @@
 					"particle_effects": [
 						{
 							"effect": "rift_circle"
+						},
+						{
+							"effect": "rift_leak"
 						}
 					]
 				}
