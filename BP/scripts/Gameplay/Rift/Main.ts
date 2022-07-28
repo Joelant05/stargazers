@@ -1,5 +1,6 @@
 import { world, Location, Entity, MinecraftBlockTypes, IntBlockProperty, Block, EntityHealthComponent } from "mojang-minecraft"
 import { locToBlockLoc } from "scripts/Utils/location.js"
+import { alert } from "scripts/Utils/alert.js"
 
 export class Rift {
     /**
@@ -64,6 +65,11 @@ export class Rift {
 
     end() {
         this.lightBlock.setType(MinecraftBlockTypes.air)
+        for (const player of world.getPlayers()) {
+            alert([
+                { text: 'You have successfully closed the rift! §6Check for loot where the rift once was.§r' }
+            ], player)
+        }
         this.entity.triggerEvent('star:end')
     }
 }
