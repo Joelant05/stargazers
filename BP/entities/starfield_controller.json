@@ -33,6 +33,18 @@
 					}
 				]
 			},
+			"minecraft:timer": {
+				"looping": true,
+				"randomInterval": true,
+				"time": [
+					2,
+					5
+				],
+				"time_down_event": {
+					"target": "self",
+					"event": "star:spawn_comet"
+				}
+			},
 			"minecraft:damage_sensor": {
 				"triggers": [
 					{
@@ -73,6 +85,52 @@
 						"/playanimation @e[type=star:star,c=1,r=32] animation.star.spin"
 					]
 				}
+			},
+			"star:spawn_comet": {
+				"randomize": [
+					{
+						"weight": 1,
+						"run_command": {
+							"target": "self",
+							"command": "/particle star:starfield_comet ~10 ~ ~"
+						}
+					},
+					{
+						"weight": 1,
+						"run_command": {
+							"target": "self",
+							"command": "/particle star:starfield_comet ~10 ~ ~10"
+						}
+					},
+					{
+						"weight": 1,
+						"run_command": {
+							"target": "self",
+							"command": "/particle star:starfield_comet ~-10 ~ ~"
+						}
+					},
+					{
+						"weight": 1,
+						"run_command": {
+							"target": "self",
+							"command": "/particle star:starfield_comet ~ ~ 10~"
+						}
+					},
+					{
+						"weight": 1,
+						"run_command": {
+							"target": "self",
+							"command": "/particle star:starfield_comet ~-10 ~ ~-10"
+						}
+					},
+					{
+						"weight": 1,
+						"run_command": {
+							"target": "self",
+							"command": "/particle star:starfield_comet ~ ~ ~-10"
+						}
+					}
+				]
 			}
 		}
 	}
