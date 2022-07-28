@@ -2,6 +2,8 @@
 
 A Minecraft Bedrock Edition Add-On started for the Bedrock Add-Ons 8k member jam! This Add-On isn't finished and I will work on it more in the future...
 
+![title](./images/main.png)
+
 ## Features
 
 ### General
