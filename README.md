@@ -15,6 +15,8 @@ This Add-On was made solo, for the Bedrock Add-Ons 8k member jam. It may not add
 - Custom textures and models
 - And more...
 
+Built for 1.19.10 (latest release build) with Holiday Creator Features and GameTest Framework experimental toggles enabled.
+
 ### Telescope
 
 This Add-On is based around the idea of **stargazing**; for this, you can craft a telescope with the following recipe:
