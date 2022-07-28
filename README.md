@@ -6,7 +6,7 @@ A Minecraft Bedrock Edition Add-On started for the Bedrock Add-Ons 8k member jam
 
 ### General
 
-This Add-On was made solo, for the Bedrock Add-Ons 8k member jam.
+This Add-On was made solo, for the Bedrock Add-Ons 8k member jam. It may not add much content in game, but quite some time was spent prototyping and refining the included features.
 
 - 8 custom particles
 - 2 custom sounds
@@ -51,3 +51,6 @@ More events will be added in the future.
 A rift is a crack between worlds, where enemies will flood through over 3 waves. Once completed, you will be granted some rewards :D
 
 ![rift screenshot](./images/rift.png)
+
+
+Made with [bridge.](https://bridge-core.app/), [BlockBench](https://www.blockbench.net/) and [Snowstorm](https://snowstorm.app/)
