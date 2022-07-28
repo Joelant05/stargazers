@@ -34,7 +34,6 @@ export class Rift {
     }
 
     start() {
-        console.warn('start')
         this.entity.runCommand('playsound ambient.weather.thunder @a ~ ~ ~')
         this.progressWave()
 
@@ -66,6 +65,6 @@ export class Rift {
 
     end() {
         this.lightBlock.setType(MinecraftBlockTypes.air)
-        // TODO
+        this.entity.triggerEvent('star:end')
     }
 }

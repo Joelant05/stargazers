@@ -167,6 +167,22 @@
 						]
 					}
 				]
+			},
+			"star:end": {
+				"sequence": [
+					{
+						"run_command": {
+							"target": "self",
+							"command": "/loot spawn ~ ~ ~ loot \"entities/rift\""
+						}
+					},
+					{
+						"trigger": {
+							"target": "self",
+							"event": "utils:despawn"
+						}
+					}
+				]
 			}
 		}
 	}

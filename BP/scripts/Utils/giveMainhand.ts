@@ -11,7 +11,6 @@ export function giveMainhand(item: ItemType, player: Player) {
     if (current) {
         // Move current item out of the way first
         for (let i = 0; i < container.size; i++) {
-            console.warn(i)
             const presentItem = container.getItem(i)
             if (!presentItem) {
                 container.setItem(i, current)
