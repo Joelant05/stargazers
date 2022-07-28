@@ -11,7 +11,7 @@
 			"star:wave_1": {
 				"minecraft:boss": {
 					"hud_range": 60,
-					"name": "Wave 1",
+					"name": "Wave Progress",
 					"should_darken_sky": false
 				},
 				"minecraft:variant": {
@@ -21,7 +21,7 @@
 			"star:wave_2": {
 				"minecraft:boss": {
 					"hud_range": 60,
-					"name": "Wave 2",
+					"name": "Wave Progress",
 					"should_darken_sky": false
 				},
 				"minecraft:variant": {
@@ -31,7 +31,7 @@
 			"star:wave_3": {
 				"minecraft:boss": {
 					"hud_range": 60,
-					"name": "Wave 3",
+					"name": "Wave Progress",
 					"should_darken_sky": false
 				},
 				"minecraft:variant": {
@@ -87,80 +87,86 @@
 		},
 		"events": {
 			"star:start_wave_1": {
-				"add": {
-					"component_groups": [
-						"star:wave_1"
-					]
-				},
-				"run_command": {
-					"target": "self",
-					"command": [
-						"/summon zombie ~ ~ ~ star:rift_spawned \"Rift Zombie\"",
-						"/summon zombie ~ ~ ~ star:rift_spawned \"Rift Zombie\"",
-						"/summon zombie ~ ~ ~ star:rift_spawned \"Rift Zombie\"",
-						"/summon zombie ~ ~ ~ star:rift_spawned \"Rift Zombie\"",
-						"/summon zombie ~ ~ ~ star:rift_spawned \"Rift Zombie\"",
-						"/summon skeleton ~ ~ ~ star:rift_spawned \"Rift Skeleton\"",
-						"/summon skeleton ~ ~ ~ star:rift_spawned \"Rift Skeleton\"",
-						"/summon skeleton ~ ~ ~ star:rift_spawned \"Rift Skeleton\"",
-						"/summon skeleton ~ ~ ~ star:rift_spawned \"Rift Skeleton\"",
-						"/summon skeleton ~ ~ ~ star:rift_spawned \"Rift Skeleton\""
-					]
-				}
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"star:wave_1"
+							]
+						}
+					},
+					{
+						"randomize": [
+							{
+								"weight": 1,
+								"run_command": {
+									"target": "self",
+									"command": [
+										"/function rift/wave_1/wave_1a"
+									]
+								}
+							}
+						]
+					}
+				]
 			},
 			"star:start_wave_2": {
-				"remove": {
-					"component_groups": [
-						"star:wave_1"
-					]
-				},
-				"add": {
-					"component_groups": [
-						"star:wave_2"
-					]
-				},
-				"run_command": {
-					"target": "self",
-					"command": [
-						"/summon minecraft:piglin_brute ~ ~ ~ star:rift_spawned \"Rift Piglin Brute\"",
-						"/summon minecraft:piglin_brute ~ ~ ~ star:rift_spawned \"Rift Piglin Brute\"",
-						"/summon minecraft:zombie ~ ~ ~ star:rift_spawned \"Rift Zombie\"",
-						"/summon minecraft:zombie ~ ~ ~ star:rift_spawned \"Rift Zombie\"",
-						"/summon minecraft:zombie ~ ~ ~ star:rift_spawned \"Rift Zombie\"",
-						"/summon minecraft:zombie ~ ~ ~ star:rift_spawned \"Rift Zombie\"",
-						"/summon minecraft:husk ~ ~ ~ star:rift_spawned \"Rift Husk\"",
-						"/summon minecraft:husk ~ ~ ~ star:rift_spawned \"Rift Husk\"",
-						"/summon minecraft:husk ~ ~ ~ star:rift_spawned \"Rift Husk\"",
-						"/summon minecraft:husk ~ ~ ~ star:rift_spawned \"Rift Husk\""
-					]
-				}
+				"sequence": [
+					{
+						"remove": {
+							"component_groups": [
+								"star:wave_1"
+							]
+						},
+						"add": {
+							"component_groups": [
+								"star:wave_2"
+							]
+						}
+					},
+					{
+						"randomize": [
+							{
+								"weight": 1,
+								"run_command": {
+									"target": "self",
+									"command": [
+										"/function rift/wave_2/wave_2a"
+									]
+								}
+							}
+						]
+					}
+				]
 			},
 			"star:start_wave_3": {
-				"remove": {
-					"component_groups": [
-						"star:wave_2"
-					]
-				},
-				"add": {
-					"component_groups": [
-						"star:wave_3"
-					]
-				},
-				"run_command": {
-					"target": "self",
-					"command": [
-						"/summon minecraft:wither_skeleton ~ ~ ~ star:rift_spawned \"Rift Wither Skeleton\"",
-						"/summon minecraft:wither_skeleton ~ ~ ~ star:rift_spawned \"Rift Wither Skeleton\"",
-						"/summon minecraft:wither_skeleton ~ ~ ~ star:rift_spawned \"Rift Wither Skeleton\"",
-						"/summon minecraft:wither_skeleton ~ ~ ~ star:rift_spawned \"Rift Wither Skeleton\"",
-						"/summon minecraft:piglin_brute ~ ~ ~ star:rift_spawned \"Rift Piglin Brute\"",
-						"/summon minecraft:spider ~ ~ ~ star:rift_spawned \"Rift Spider\"",
-						"/summon minecraft:spider ~ ~ ~ star:rift_spawned \"Rift Spider\"",
-						"/summon minecraft:spider ~ ~ ~ star:rift_spawned \"Rift Spider\"",
-						"/summon minecraft:spider ~ ~ ~ star:rift_spawned \"Rift Spider\"",
-						"/summon minecraft:spider ~ ~ ~ star:rift_spawned \"Rift Spider\""
-					]
-				}
+				"sequence": [
+					{
+						"remove": {
+							"component_groups": [
+								"star:wave_2"
+							]
+						},
+						"add": {
+							"component_groups": [
+								"star:wave_3"
+							]
+						}
+					},
+					{
+						"randomize": [
+							{
+								"weight": 1,
+								"run_command": {
+									"target": "self",
+									"command": [
+										"/function rift/wave_3/wave_3a"
+									]
+								}
+							}
+						]
+					}
+				]
 			}
 		}
 	}
