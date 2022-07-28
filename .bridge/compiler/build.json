@@ -1,0 +1,19 @@
+{
+    "plugins": [
+			"typeScript",
+			"entityIdentifierAlias",
+			"customEntityComponents",
+			"customItemComponents",
+			"customBlockComponents",
+			"customCommands",
+			"moLang",
+			"formatVersionCorrection",
+			[
+				"rewriteForPackaging",
+				{
+					"packName": "Stargazers",
+                    "format": "mcaddon"
+				}
+			]
+		]
+}
