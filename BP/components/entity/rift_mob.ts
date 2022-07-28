@@ -24,7 +24,7 @@ export default defineComponent(({ name, template, schema }) => {
 					spawn_event_ext
 				]
 			},
-			'star:rift_mob_death': {}
+			'star:rift_mob_death': {},
 		}, 'minecraft:entity/events')
 
 		create({
@@ -33,10 +33,6 @@ export default defineComponent(({ name, template, schema }) => {
 					"target": "self",
 					"event": "star:rift_mob_death"
 				},
-				"minecraft:type_family": {
-					"family": ["rift_entity"]
-				},
-				// Does this not work?
 				"minecraft:damage_sensor": {
 					"triggers": [
 						{
@@ -45,12 +41,13 @@ export default defineComponent(({ name, template, schema }) => {
 								"filters": {
 									"test": "is_family",
 									"subject": "damager",
-									"value": "rift_entity"
+									"operator": "!=",
+									"value": "player"
 								}
 							}
 						}
 					]
-				}
+				},
 			}
 		}, 'minecraft:entity/component_groups')
 	})
