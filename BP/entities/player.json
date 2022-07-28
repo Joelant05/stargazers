@@ -16,6 +16,49 @@
 			}
 		},
 		"component_groups": {
+			"star:fall_invulnerable": {
+				"minecraft:damage_sensor": {
+					"triggers": [
+						{
+							"deals_damage": false,
+							"on_damage": {
+								"filters": {
+									"test": "has_damage",
+									"subject": "self",
+									"value": "fall"
+								}
+							}
+						}
+					]
+				},
+				"minecraft:environment_sensor": {
+					"triggers": [
+						{
+							"target": "self",
+							"filters": {
+								"all_of": [
+									{
+										"test": "on_ground",
+										"subject": "self",
+										"value": true
+									},
+									{
+										"test": "is_riding",
+										"subject": "self",
+										"value": false
+									},
+									{
+										"test": "is_moving",
+										"subject": "self",
+										"value": true
+									}
+								]
+							},
+							"event": "star:remove_no_fall_damage"
+						}
+					]
+				}
+			},
 			"star:queueing_sound": {
 				"minecraft:timer": {
 					"time": 1.75,
@@ -190,14 +233,42 @@
 			}
 		},
 		"events": {
-			"star:on_star_interact_player": {},
+			"star:no_fall_damage_until_land": {
+				"add": {
+					"component_groups": [
+						"star:fall_invulnerable"
+					]
+				},
+				"run_command": {
+					"target": "self",
+					"command": "/say start"
+				}
+			},
+			"star:remove_no_fall_damage": {
+				"remove": {
+					"component_groups": [
+						"star:fall_invulnerable"
+					]
+				},
+				"run_command": {
+					"target": "self",
+					"command": "/say end"
+				}
+			},
 			// KEEP - used in script
+			"star:on_star_interact_player": {},
 			"star:begin_starfield": {},
+			// ----
 			"star:play_starfall": {
 				"run_command": {
 					"target": "self",
 					"command": [
 						"/playsound sfx.star_fall @s ~ ~ ~"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"star:queueing_sound"
 					]
 				}
 			},

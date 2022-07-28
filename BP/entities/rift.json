@@ -105,6 +105,24 @@
 										"/function rift/wave_1/wave_1a"
 									]
 								}
+							},
+							{
+								"weight": 1,
+								"run_command": {
+									"target": "self",
+									"command": [
+										"/function rift/wave_1/wave_1b"
+									]
+								}
+							},
+							{
+								"weight": 1,
+								"run_command": {
+									"target": "self",
+									"command": [
+										"/function rift/wave_1/wave_1c"
+									]
+								}
 							}
 						]
 					}
@@ -134,6 +152,24 @@
 										"/function rift/wave_2/wave_2a"
 									]
 								}
+							},
+							{
+								"weight": 1,
+								"run_command": {
+									"target": "self",
+									"command": [
+										"/function rift/wave_2/wave_2b"
+									]
+								}
+							},
+							{
+								"weight": 1,
+								"run_command": {
+									"target": "self",
+									"command": [
+										"/function rift/wave_2/wave_2c"
+									]
+								}
 							}
 						]
 					}
@@ -161,6 +197,24 @@
 									"target": "self",
 									"command": [
 										"/function rift/wave_3/wave_3a"
+									]
+								}
+							},
+							{
+								"weight": 1,
+								"run_command": {
+									"target": "self",
+									"command": [
+										"/function rift/wave_3/wave_3b"
+									]
+								}
+							},
+							{
+								"weight": 1,
+								"run_command": {
+									"target": "self",
+									"command": [
+										"/function rift/wave_3/wave_3c"
 									]
 								}
 							}

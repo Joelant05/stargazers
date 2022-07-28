@@ -32,7 +32,7 @@ A telescope can be interacted with to enter a [starfield](#starfield), assuming 
 
 ### Starfield
 
-When entering a starfield you must search for the **Magical Star** and look at it with the spyglass. This will cause the star to fall down to the ground.
+When entering a starfield you must search for the **Magical Star** and look at it with the spyglass. This will cause the star to fall down to the ground. As an added ambient effect, you will see comets shooting through space while in a starfield.
 
 ![incomplete starfield screenshot](./images/starfield.png)
 
@@ -51,6 +51,11 @@ More events will be added in the future.
 A rift is a crack between worlds, where enemies will flood through over 3 waves. Once completed, you will be granted some rewards :D
 
 ![rift screenshot](./images/rift.png)
+
+
+### Known Bugs
+
+- Player might be able to die from fall (?)
 
 
 Made with [bridge.](https://bridge-core.app/), [BlockBench](https://www.blockbench.net/) and [Snowstorm](https://snowstorm.app/)

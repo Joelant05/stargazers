@@ -1,0 +1,11 @@
+summon zombie ~ ~ ~ star:rift_spawned "Rift Zombie"
+summon zombie ~ ~ ~ star:rift_spawned "Rift Zombie"
+summon zombie ~ ~ ~ star:rift_spawned "Rift Zombie"
+summon zombie ~ ~ ~ star:rift_spawned "Rift Zombie"
+summon zombie ~ ~ ~ star:rift_spawned "Rift Zombie"
+
+summon spider ~ ~ ~ star:rift_spawned "Rift Spider"
+summon spider ~ ~ ~ star:rift_spawned "Rift Spider"
+summon spider ~ ~ ~ star:rift_spawned "Rift Spider"
+summon spider ~ ~ ~ star:rift_spawned "Rift Spider"
+summon spider ~ ~ ~ star:rift_spawned "Rift Spider"
