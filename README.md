@@ -54,10 +54,6 @@ A rift is a crack between worlds, where enemies will flood through over 3 waves.
 
 ![rift screenshot](./images/rift.png)
 
-
-### Known Bugs
-
-- Player might be able to die from fall (?)
-
+---
 
 Made with [bridge.](https://bridge-core.app/), [BlockBench](https://www.blockbench.net/) and [Snowstorm](https://snowstorm.app/)
