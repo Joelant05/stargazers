@@ -238,10 +238,6 @@
 					"component_groups": [
 						"star:fall_invulnerable"
 					]
-				},
-				"run_command": {
-					"target": "self",
-					"command": "/say start"
 				}
 			},
 			"star:remove_no_fall_damage": {
@@ -249,10 +245,6 @@
 					"component_groups": [
 						"star:fall_invulnerable"
 					]
-				},
-				"run_command": {
-					"target": "self",
-					"command": "/say end"
 				}
 			},
 			// KEEP - used in script
