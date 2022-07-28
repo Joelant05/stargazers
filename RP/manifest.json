@@ -14,8 +14,8 @@
 		}
 	},
 	"header": {
-		"name": "pack.name",
-		"description": "pack.description",
+		"name": "Stargazers RP",
+		"description": "Look to the stars and find your way... Entry for Bedrock Add-Ons jam, enjoy :D",
 		"min_engine_version": [
 			1,
 			19,

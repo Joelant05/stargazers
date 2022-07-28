@@ -1,6 +1,3 @@
-pack.name=Stargazers RP
-pack.description=Look to the stars and find your way... Entry for Bedrock Add-Ons jam, enjoy :D
-
 item.spawn_egg.entity.star:falling_star.name=Spawn Falling Star
 entity.star:falling_star.name=Falling Star
 
