@@ -52,7 +52,6 @@ export class Rift {
     progressWave() {
         this.currentWave++
         if (this.currentWave >= 4) {
-            console.warn('complete')
             this.end()
             return true
         } else {

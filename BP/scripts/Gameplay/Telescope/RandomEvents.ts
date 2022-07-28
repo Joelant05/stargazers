@@ -23,8 +23,6 @@ export default class RandomEvent {
     }
 
     run(player: Player) {
-        this.event = 'rift' // remove when done testing
-        console.warn(this.event)
         switch (this.event) {
             case 'positiveEffects': {
                 alert([
