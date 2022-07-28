@@ -42,7 +42,6 @@ export class Starfield {
         let progress = 0
         const star = spawnInRange('star:star', this.position, 15, 15, 6)
         this.player.triggerEvent('star:no_fall_damage_until_land')
-        console.warn('add effect')
         this.forceRide = world.events.tick.subscribe(() => {
             try {
                 controller.runCommand('ride @p start_riding @s teleport_rider')
